@@ -1,0 +1,6 @@
+{
+	"appId": "com.unitconvert.app",
+	"appName": "unit-convert",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}

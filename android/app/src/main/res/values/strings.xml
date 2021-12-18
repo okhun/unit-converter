@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">unit-convert</string>
+    <string name="title_activity_main">unit-convert</string>
+    <string name="package_name">com.unitconvert.app</string>
+    <string name="custom_url_scheme">com.unitconvert.app</string>
+</resources>
