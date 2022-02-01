@@ -3,145 +3,86 @@ import { useState } from "react";
 
 const Angle: React.FC = () => {
   const templength = [
-    { value: 1000000, type: "ml (cc)" },
-    { value: 100000, type: "cl" },
-    { value: 10000, type: "dl" },
-    { value: 1000, type: "L (litre)" },
-    { value: 1000000000, type: "mm\xB3" },
-    { value: 1000000, type: "cm\xB3" },
-    { value: 1000, type: "dm\xB3" },
-    { value: 1, type: "m\xB3" },
-    { value: 61023.7441, type: "in\xB3" },
-    { value: 35.314667, type: "ft\xB3" },
-    { value: 1.307951, type: "yd\xB3" },
-    { value: 219.969249, type: "gal (UK)" },
-    { value: 264.172052, type: "gal (US)" },
-    { value: 6.289811, type: "bbl" },
-    { value: 1759.75399, type: "pt (UK)" },
-    { value: 2113.37642, type: "pt (US)" },
-    { value: 33814.0227, type: "fl oz (US)" },
+    { value: 1, type: "rad" },
+    { value: 206264.806, type: 'sec (")' },
+    { value: 3437.74677, type: "min (')" },
+    { value: 57.29578, type: "deg (°)" },
+    { value: 63.661977, type: "grad" },
+    { value: 0.159155, type: "circle" },
+    { value: 1018.59164, type: "6400 mil" },
+    { value: 954.929659, type: "6000 mil" },
+    // { value: 155.740772, type: "%" },
   ];
   const [length, setLength] = useState(templength);
   const [input, setInput] = useState(1);
-  const [type, setType] = useState("m\xB3");
+  const [type, setType] = useState("rad");
   const calcLength = (type: any, ...t: any) => {
     let temp = [...templength];
-    if (type === "m\xB3") {
+    if (type === "rad") {
       for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +(templength[i].value * +t[0]).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "ml (cc)") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 1000000).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "cl") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 100000).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "dl") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 10000).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "L (litre)") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 1000).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "mm\xB3") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 1000000000).toFixed(
-          6
+        temp[i].value = +(templength[i].value * +t[0]).toFixed(
+          templength[i].value * +t[0] > 0.000001 ? 6 : 12
         );
         temp[i].type = templength[i].type;
       }
     }
-    if (type === "cm\xB3") {
+    if (type === 'sec (")') {
       for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 1000000).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "dm\xB3") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 1000).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "in\xB3") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 61023.7441).toFixed(
-          6
+        temp[i].value = +((templength[i].value * +t[0]) / 206264.806).toFixed(
+          (templength[i].value * +t[0]) / 206264.806 > 0.000001 ? 6 : 12
         );
         temp[i].type = templength[i].type;
       }
     }
-    if (type === "ft\xB3") {
+    if (type === "min (')") {
       for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 35.314667).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "yd\xB3") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 1.307951).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "gal (UK)") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 219.969249).toFixed(
-          6
+        temp[i].value = +((templength[i].value * +t[0]) / 3437.74677).toFixed(
+          (templength[i].value * +t[0]) / 3437.74677 > 0.000001 ? 6 : 12
         );
         temp[i].type = templength[i].type;
       }
     }
-    if (type === "gal (US)") {
+    if (type === "deg (°)") {
       for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 264.172052).toFixed(
-          6
+        temp[i].value = +((templength[i].value * +t[0]) / 57.29578).toFixed(
+          (templength[i].value * +t[0]) / 57.29578 > 0.000001 ? 6 : 12
         );
         temp[i].type = templength[i].type;
       }
     }
-    if (type === "bbl") {
+    if (type === "grad") {
       for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 6.289811).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "pt (UK)") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 1759.75399).toFixed(
-          6
+        temp[i].value = +((templength[i].value * +t[0]) / 63.661977).toFixed(
+          (templength[i].value * +t[0]) / 63.661977 > 0.000001 ? 6 : 12
         );
         temp[i].type = templength[i].type;
       }
     }
-    if (type === "pt (US)") {
+    if (type === "circle") {
       for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 2113.37642).toFixed(
-          6
+        temp[i].value = +((templength[i].value * +t[0]) / 0.159155).toFixed(
+          (templength[i].value * +t[0]) / 0.159155 > 0.000001 ? 6 : 12
         );
         temp[i].type = templength[i].type;
       }
     }
-    if (type === "fl oz (US)") {
+    if (type === "6400 mil") {
       for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 33814.0227).toFixed(
-          6
+        temp[i].value = +((templength[i].value * +t[0]) / 1018.59164).toFixed(
+          (templength[i].value * +t[0]) / 1018.59164 > 0.000001 ? 6 : 12
         );
         temp[i].type = templength[i].type;
       }
     }
+    if (type === "6000 mil") {
+      for (let i = 0; i < templength.length; i++) {
+        temp[i].value = +((templength[i].value * +t[0]) / 954.929659).toFixed(
+          (templength[i].value * +t[0]) / 954.929659 > 0.000001 ? 6 : 12
+        );
+        temp[i].type = templength[i].type;
+      }
+    }
+
     setLength(temp);
   };
   return (
@@ -180,7 +121,7 @@ const Angle: React.FC = () => {
             }}
             okText="Ok"
             cancelText="Cancel"
-            placeholder={"m\xB3"}
+            placeholder={"rad"}
           >
             {length.map((el: any, i: any) => (
               <IonSelectOption key={"key_" + i}>{el.type}</IonSelectOption>

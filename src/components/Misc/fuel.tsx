@@ -3,142 +3,99 @@ import { useState } from "react";
 
 const Fuel: React.FC = () => {
   const templength = [
-    { value: 1000000, type: "ml (cc)" },
-    { value: 100000, type: "cl" },
-    { value: 10000, type: "dl" },
-    { value: 1000, type: "L (litre)" },
-    { value: 1000000000, type: "mm\xB3" },
-    { value: 1000000, type: "cm\xB3" },
-    { value: 1000, type: "dm\xB3" },
-    { value: 1, type: "m\xB3" },
-    { value: 61023.7441, type: "in\xB3" },
-    { value: 35.314667, type: "ft\xB3" },
-    { value: 1.307951, type: "yd\xB3" },
-    { value: 219.969249, type: "gal (UK)" },
-    { value: 264.172052, type: "gal (US)" },
-    { value: 6.289811, type: "bbl" },
-    { value: 1759.75399, type: "pt (UK)" },
-    { value: 2113.37642, type: "pt (US)" },
-    { value: 33814.0227, type: "fl oz (US)" },
+    { value: 1, type: "km/l" },
+    { value: 0.621371, type: "mi/l" },
+    { value: 3.785412, type: "km/gal (US)" },
+    { value: 2.352146, type: "mi/gal (US)" },
+    { value: 2.824811, type: "mi/gal (UK)" },
+    { value: 100, type: "l/100km" },
   ];
   const [length, setLength] = useState(templength);
   const [input, setInput] = useState(1);
-  const [type, setType] = useState("m\xB3");
+  const [type, setType] = useState("km/l");
   const calcLength = (type: any, ...t: any) => {
     let temp = [...templength];
-    if (type === "m\xB3") {
+    if (type === "km/l") {
       for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +(templength[i].value * +t[0]).toFixed(6);
+        if (i === 5) {
+          temp[i].value = +(templength[i].value / +t[0]).toFixed(
+            templength[i].value * +t[0] > 0.000001 ? 6 : 12
+          );
+        } else {
+          temp[i].value = +(templength[i].value * +t[0]).toFixed(
+            templength[i].value * +t[0] > 0.000001 ? 6 : 12
+          );
+        }
         temp[i].type = templength[i].type;
       }
     }
-    if (type === "ml (cc)") {
+    if (type === "mi/l") {
       for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 1000000).toFixed(6);
+        if (i === 5) {
+          temp[i].value = +((templength[i].value / +t[0]) * 0.621371).toFixed(
+            (templength[i].value * +t[0]) / 0.621371 > 0.000001 ? 6 : 12
+          );
+        } else {
+          temp[i].value = +((templength[i].value * +t[0]) / 0.621371).toFixed(
+            (templength[i].value * +t[0]) / 0.621371 > 0.000001 ? 6 : 12
+          );
+        }
         temp[i].type = templength[i].type;
       }
     }
-    if (type === "cl") {
+    if (type === "km/gal (US)") {
       for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 100000).toFixed(6);
+        if (i === 5) {
+          temp[i].value = +((templength[i].value / +t[0]) * 3.785412).toFixed(
+            (templength[i].value * +t[0]) / 3.785412 > 0.000001 ? 6 : 12
+          );
+        } else {
+          temp[i].value = +((templength[i].value * +t[0]) / 3.785412).toFixed(
+            (templength[i].value * +t[0]) / 3.785412 > 0.000001 ? 6 : 12
+          );
+        }
         temp[i].type = templength[i].type;
       }
     }
-    if (type === "dl") {
+    if (type === "mi/gal (US)") {
       for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 10000).toFixed(6);
+        if (i === 5) {
+          temp[i].value = +((templength[i].value / +t[0]) * 2.352146).toFixed(
+            (templength[i].value * +t[0]) / 2.352146 > 0.000001 ? 6 : 12
+          );
+        } else {
+          temp[i].value = +((templength[i].value * +t[0]) / 2.352146).toFixed(
+            (templength[i].value * +t[0]) / 2.352146 > 0.000001 ? 6 : 12
+          );
+        }
         temp[i].type = templength[i].type;
       }
     }
-    if (type === "L (litre)") {
+    if (type === "mi/gal (UK)") {
       for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 1000).toFixed(6);
+        if (i === 5) {
+          temp[i].value = +((templength[i].value / +t[0]) * 2.824811).toFixed(
+            (templength[i].value * +t[0]) / 2.824811 > 0.000001 ? 6 : 12
+          );
+        } else {
+          temp[i].value = +((templength[i].value * +t[0]) / 2.824811).toFixed(
+            (templength[i].value * +t[0]) / 2.824811 > 0.000001 ? 6 : 12
+          );
+        }
         temp[i].type = templength[i].type;
       }
     }
-    if (type === "mm\xB3") {
+    if (type === "l/100km") {
       for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 1000000000).toFixed(
-          6
-        );
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "cm\xB3") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 1000000).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "dm\xB3") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 1000).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "in\xB3") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 61023.7441).toFixed(
-          6
-        );
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "ft\xB3") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 35.314667).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "yd\xB3") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 1.307951).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "gal (UK)") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 219.969249).toFixed(
-          6
-        );
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "gal (US)") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 264.172052).toFixed(
-          6
-        );
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "bbl") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 6.289811).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "pt (UK)") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 1759.75399).toFixed(
-          6
-        );
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "pt (US)") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 2113.37642).toFixed(
-          6
-        );
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "fl oz (US)") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 33814.0227).toFixed(
-          6
-        );
+        if (i === 5) {
+          temp[i].value = +((templength[i].value * +t[0]) / 100).toFixed(
+            (templength[i].value * +t[0]) / 100 > 0.000001 ? 6 : 12
+          );
+        } else {
+          temp[i].value = +((templength[i].value / +t[0]) * 100).toFixed(
+            (templength[i].value * +t[0]) / 100 > 0.000001 ? 6 : 12
+          );
+        }
         temp[i].type = templength[i].type;
       }
     }
@@ -180,7 +137,7 @@ const Fuel: React.FC = () => {
             }}
             okText="Ok"
             cancelText="Cancel"
-            placeholder={"m\xB3"}
+            placeholder={"km/l"}
           >
             {length.map((el: any, i: any) => (
               <IonSelectOption key={"key_" + i}>{el.type}</IonSelectOption>

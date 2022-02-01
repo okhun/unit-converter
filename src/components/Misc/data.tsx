@@ -3,145 +3,148 @@ import { useState } from "react";
 
 const Data: React.FC = () => {
   const templength = [
-    { value: 1000000, type: "ml (cc)" },
-    { value: 100000, type: "cl" },
-    { value: 10000, type: "dl" },
-    { value: 1000, type: "L (litre)" },
-    { value: 1000000000, type: "mm\xB3" },
-    { value: 1000000, type: "cm\xB3" },
-    { value: 1000, type: "dm\xB3" },
-    { value: 1, type: "m\xB3" },
-    { value: 61023.7441, type: "in\xB3" },
-    { value: 35.314667, type: "ft\xB3" },
-    { value: 1.307951, type: "yd\xB3" },
-    { value: 219.969249, type: "gal (UK)" },
-    { value: 264.172052, type: "gal (US)" },
-    { value: 6.289811, type: "bbl" },
-    { value: 1759.75399, type: "pt (UK)" },
-    { value: 2113.37642, type: "pt (US)" },
-    { value: 33814.0227, type: "fl oz (US)" },
+    { value: 1, type: "MB" },
+    { value: 8000000, type: "bit" },
+    { value: 1000000, type: "Byte" },
+    { value: 1000, type: "kB" },
+    { value: 0.001, type: "GB" },
+    { value: 976.5625, type: "KiB" },
+    { value: 0.953674, type: "MiB" },
+    { value: 0.000931, type: "GiB" },
+    { value: 9.0949e-7, type: "TiB" },
+    { value: 8.8818e-10, type: "PiB" },
+    { value: 8000, type: "kbit/s" },
+    { value: 8, type: "Mbit/s" },
+    { value: 0.008, type: "Gbit/s" },
+    { value: 7812.5, type: "packet" },
+    { value: 1953.125, type: "block" },
   ];
   const [length, setLength] = useState(templength);
   const [input, setInput] = useState(1);
-  const [type, setType] = useState("m\xB3");
+  const [type, setType] = useState("MB");
   const calcLength = (type: any, ...t: any) => {
     let temp = [...templength];
-    if (type === "m\xB3") {
+    if (type === "MB") {
       for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +(templength[i].value * +t[0]).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "ml (cc)") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 1000000).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "cl") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 100000).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "dl") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 10000).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "L (litre)") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 1000).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "mm\xB3") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 1000000000).toFixed(
-          6
+        temp[i].value = +(templength[i].value * +t[0]).toFixed(
+          templength[i].value * +t[0] > 0.000001 ? 6 : 12
         );
         temp[i].type = templength[i].type;
       }
     }
-    if (type === "cm\xB3") {
+    if (type === "bit") {
       for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 1000000).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "dm\xB3") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 1000).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "in\xB3") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 61023.7441).toFixed(
-          6
+        temp[i].value = +((templength[i].value * +t[0]) / 8000000).toFixed(
+          (templength[i].value * +t[0]) / 8000000 > 0.000001 ? 6 : 12
         );
         temp[i].type = templength[i].type;
       }
     }
-    if (type === "ft\xB3") {
+    if (type === "Byte") {
       for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 35.314667).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "yd\xB3") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 1.307951).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "gal (UK)") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 219.969249).toFixed(
-          6
+        temp[i].value = +((templength[i].value * +t[0]) / 1000000).toFixed(
+          (templength[i].value * +t[0]) / 1000000 > 0.000001 ? 6 : 16
         );
         temp[i].type = templength[i].type;
       }
     }
-    if (type === "gal (US)") {
+    if (type === "kB") {
       for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 264.172052).toFixed(
-          6
+        temp[i].value = +((templength[i].value * +t[0]) / 1000).toFixed(
+          (templength[i].value * +t[0]) / 1000 > 0.000001 ? 6 : 12
         );
         temp[i].type = templength[i].type;
       }
     }
-    if (type === "bbl") {
+    if (type === "GB") {
       for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 6.289811).toFixed(6);
-        temp[i].type = templength[i].type;
-      }
-    }
-    if (type === "pt (UK)") {
-      for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 1759.75399).toFixed(
-          6
+        temp[i].value = +((templength[i].value * +t[0]) / 0.001).toFixed(
+          (templength[i].value * +t[0]) / 0.001 > 0.000001 ? 6 : 12
         );
         temp[i].type = templength[i].type;
       }
     }
-    if (type === "pt (US)") {
+    if (type === "KiB") {
       for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 2113.37642).toFixed(
-          6
+        temp[i].value = +((templength[i].value * +t[0]) / 976.5625).toFixed(
+          (templength[i].value * +t[0]) / 976.5625 > 0.000001 ? 6 : 12
         );
         temp[i].type = templength[i].type;
       }
     }
-    if (type === "fl oz (US)") {
+    if (type === "MiB") {
       for (let i = 0; i < templength.length; i++) {
-        temp[i].value = +((templength[i].value * +t[0]) / 33814.0227).toFixed(
-          6
+        temp[i].value = +((templength[i].value * +t[0]) / 0.953674).toFixed(
+          (templength[i].value * +t[0]) / 0.953674 > 0.000001 ? 6 : 12
         );
         temp[i].type = templength[i].type;
       }
     }
+    if (type === "GiB") {
+      for (let i = 0; i < templength.length; i++) {
+        temp[i].value = +((templength[i].value * +t[0]) / 0.000931).toFixed(
+          (templength[i].value * +t[0]) / 0.000931 > 0.000001 ? 6 : 12
+        );
+        temp[i].type = templength[i].type;
+      }
+    }
+    if (type === "TiB") {
+      for (let i = 0; i < templength.length; i++) {
+        temp[i].value = +((templength[i].value * +t[0]) / 9.0949e-7).toFixed(
+          (templength[i].value * +t[0]) / 9.0949e-7 > 0.000001 ? 6 : 12
+        );
+        temp[i].type = templength[i].type;
+      }
+    }
+    if (type === "PiB") {
+      for (let i = 0; i < templength.length; i++) {
+        temp[i].value = +((templength[i].value * +t[0]) / 8.8818e-10).toFixed(
+          (templength[i].value * +t[0]) / 8.8818e-10 > 0.000001 ? 6 : 12
+        );
+        temp[i].type = templength[i].type;
+      }
+    }
+    if (type === "kbit/s") {
+      for (let i = 0; i < templength.length; i++) {
+        temp[i].value = +((templength[i].value * +t[0]) / 8000).toFixed(
+          (templength[i].value * +t[0]) / 8000 > 0.000001 ? 6 : 12
+        );
+        temp[i].type = templength[i].type;
+      }
+    }
+    if (type === "Mbit/s") {
+      for (let i = 0; i < templength.length; i++) {
+        temp[i].value = +((templength[i].value * +t[0]) / 8).toFixed(
+          (templength[i].value * +t[0]) / 8 > 0.000001 ? 6 : 12
+        );
+        temp[i].type = templength[i].type;
+      }
+    }
+    if (type === "Gbit/s") {
+      for (let i = 0; i < templength.length; i++) {
+        temp[i].value = +((templength[i].value * +t[0]) / 0.008).toFixed(
+          (templength[i].value * +t[0]) / 0.008 > 0.000001 ? 6 : 12
+        );
+        temp[i].type = templength[i].type;
+      }
+    }
+    if (type === "packet") {
+      for (let i = 0; i < templength.length; i++) {
+        temp[i].value = +((templength[i].value * +t[0]) / 7812.5).toFixed(
+          (templength[i].value * +t[0]) / 7812.5 > 0.000001 ? 6 : 12
+        );
+        temp[i].type = templength[i].type;
+      }
+    }
+    if (type === "block") {
+      for (let i = 0; i < templength.length; i++) {
+        temp[i].value = +((templength[i].value * +t[0]) / 1953.125).toFixed(
+          (templength[i].value * +t[0]) / 1953.125 > 0.000001 ? 6 : 12
+        );
+        temp[i].type = templength[i].type;
+      }
+    }
+
     setLength(temp);
   };
   return (
@@ -180,7 +183,7 @@ const Data: React.FC = () => {
             }}
             okText="Ok"
             cancelText="Cancel"
-            placeholder={"m\xB3"}
+            placeholder={"MB"}
           >
             {length.map((el: any, i: any) => (
               <IonSelectOption key={"key_" + i}>{el.type}</IonSelectOption>
